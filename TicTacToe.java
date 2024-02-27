@@ -16,34 +16,39 @@ public class TicTacToe {
 
         while(true){
             Scanner scan1 = new Scanner(System.in);
-            System.out.println("Enter X in a position from 1 to 9: ");
+            System.out.print("Enter X in a position from 1 to 9: ");
             int pos1 = scan1.nextInt();
+            System.out.println();
             moves(board, pos1, 'X');
             gameBoard(board);
             if(winCheck(board,'X')){
-                System.out.println("Player 1 has won.");
+                System.out.println("\n Player 1 has won.\n");
                 break;
             }
 
             Scanner scan2 = new Scanner(System.in);
-            System.out.println("Enter O in a position from 1 to 9: ");
+            System.out.print("Enter O in a position from 1 to 9: ");
             int pos2 = scan2.nextInt();
+            System.out.println();
             moves(board, pos2, 'O');
             gameBoard(board);
             if(winCheck(board,'O')){
-                System.out.println("Player 2 has won.");
+                System.out.println("\n Player 2 has won.\n");
                 break;
             }
         }
     }
 
     public static void gameBoard(char [][] board){
+        System.out.println();
+        System.out.println("Let's begin with the game.\n");
         for(char[] r : board){
             for(char c : r){
                 System.out.print(c);
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     public static void moves(char[][] board, int pos, char player){
@@ -76,7 +81,7 @@ public class TicTacToe {
                 board[4][4] = player;
                 break;
             default:
-                System.out.println("Invalid choice");
+                System.out.println("Invalid choice.\n");
                 break;
         }
     }
