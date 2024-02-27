@@ -17,9 +17,23 @@ public class TicTacToe {
         while(true){
             Scanner scan1 = new Scanner(System.in);
             System.out.println("Enter X in a position from 1 to 9: ");
-            int pos = scan1.nextInt();
-            moves(board, pos, 'X');
+            int pos1 = scan1.nextInt();
+            moves(board, pos1, 'X');
             gameBoard(board);
+            if(winCheck(board,'X')){
+                System.out.println("Player 1 has won.");
+                break;
+            }
+
+            Scanner scan2 = new Scanner(System.in);
+            System.out.println("Enter O in a position from 1 to 9: ");
+            int pos2 = scan2.nextInt();
+            moves(board, pos2, 'O');
+            gameBoard(board);
+            if(winCheck(board,'O')){
+                System.out.println("Player 2 has won.");
+                break;
+            }
         }
     }
 
@@ -65,5 +79,22 @@ public class TicTacToe {
                 System.out.println("Invalid choice");
                 break;
         }
+    }
+
+    public static boolean winCheck(char[][] board, char player){
+        if(
+            (board[0][0] == player && board[0][2] == player && board[0][4] == player) ||
+            (board[2][0] == player && board[2][2] == player && board[2][4] == player) ||
+            (board[4][0] == player && board[4][2] == player && board[4][4] == player) ||
+            (board[0][0] == player && board[2][0] == player && board[4][0] == player) ||
+            (board[0][2] == player && board[2][2] == player && board[4][2] == player) ||
+            (board[0][4] == player && board[2][4] == player && board[4][4] == player) ||
+            (board[0][0] == player && board[2][2] == player && board[4][4] == player) ||
+            (board[0][4] == player && board[2][2] == player && board[4][0] == player)
+        )
+        {
+            return true;
+        }
+        return false;
     }
 }
